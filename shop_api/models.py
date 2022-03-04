@@ -1,9 +1,8 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
-from django.conf import settings
-from django.db.models.base import Model
 
 
 class UserProfileManager(BaseUserManager):
@@ -56,3 +55,11 @@ class UserProfile(AbstractBaseUser,PermissionsMixin):
     def __str__(self):
         """Return string representation of our user"""
         return self.email
+
+class ShopItem (models.Model):
+    """Database for our shop item"""
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length= 255)
+    price = models.CharField(max_length= 255)
+    imageUrl = models.CharField(max_length= 255)
+    isFavourite = models.BooleanField()
